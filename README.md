@@ -10,4 +10,6 @@ Quine McCluskey algorithm made in CPP
 - 연산 과정을 보고 싶은 경우 </br>
 line 80이랑 line 89에 있는 <주석>을 삭제
 ![주석 위치](./사진/Caution.png)
+주석 삭제후 실행화면
+![result](./사진/Result2.png)
 
