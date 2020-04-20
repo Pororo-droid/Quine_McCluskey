@@ -1,6 +1,5 @@
 #include<iostream>
 #include<cstdlib>
-#include<algorithm>
 
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
