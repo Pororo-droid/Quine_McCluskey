@@ -24,19 +24,6 @@ int Diff(string bin1, string bin2);
 void PrintGraph();
 void PrintMinimumSolution(string ans);
 
-void PrintMinimumSolution(string ans){
-    int i;
-    for(i = 0; i < ans.length(); i++){
-        if(ans[i] == '_')
-            continue;
-        printf("%c",'A'+i);
-        if(ans[i] == '0')
-            cout << "'" ;
-        cout << ' ';
-    }
-    cout << endl;
-}
-
 string ChangeBinary(string bin1,string bin2){
     string result= "";
     int i;
@@ -90,6 +77,7 @@ void PrimeImplicant(){
             break;
         all_arr = Primes;
         all_num = size;
+        /*
         for(i = 0; i <=4 ;i++){
             printf("%d ========\n",i);
             for(j = 0; j < all_num; j++){
@@ -98,6 +86,7 @@ void PrimeImplicant(){
             }
         }
         cout << endl;
+        */
     }
 }
 
@@ -150,7 +139,6 @@ void PrintGraph(){
             string temp = "";
             while(all_arr[i].num[j] != ' ' && j < all_arr[i].num.length())
                 temp+= all_arr[i].num[j++];
-            //cout << all_arr[i].num << ' ' << temp << endl;
             for(k = 0; k < min_num; k++){
                 if(temp == min_arr[k].num)
                     map[i][k] = 1;
@@ -172,9 +160,24 @@ void PrintGraph(){
         if(cnt == 1)
             Stack[top++] = all_arr[idx].binary;
     }
-
-    for(i = 0; i < top; i++)
+    printf("============result============\n");
+    printf("F = ");
+    for(i = 0; i < top-1; i++){
         PrintMinimumSolution(Stack[i]);
+        cout << "+";
+    }
+    PrintMinimumSolution(Stack[i]);
+}
+
+void PrintMinimumSolution(string ans){
+    int i;
+    for(i = 0; i < ans.length(); i++){
+        if(ans[i] == '_')
+            continue;
+        printf("%c",'A'+i);
+        if(ans[i] == '0')
+            cout << "'" ;
+    }
 }
 
 
@@ -191,18 +194,16 @@ int main(void){
         min_arr[i].binary = ChangeBinary(min_arr[i].num);
         min_arr[i].cnt = SetCnt(min_arr[i].binary);
     }
-        
     
     printf("입력하실 dont't care 개수를 입력하시오 : ");
     scanf("%d",&care_num);
 
     care_arr = (terms*)malloc(sizeof(terms)*care_num);
-    printf("minterm을 입력해주세요 : ");
+    printf("don't care을 입력해주세요 : ");
 
     for(i = 0; i < care_num; i++){
         cin >> care_arr[i].num;
         care_arr[i].binary = ChangeBinary(care_arr[i].num);
-        //cout << care_arr[i].num << ' ' << care_arr[i].binary << endl;
         care_arr[i].cnt = SetCnt(care_arr[i].binary);
     }
 
